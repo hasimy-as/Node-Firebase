@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const route = express.Router();
 
 route.all('*', (req, res, next) => {
@@ -22,7 +22,9 @@ route.get('/profile', (req, res) => {
     });
 });
 
-route.get('/', (req, res) => {});
+route.get('/', (req, res) => {
+  res.end('welcome to web');
+});
 
 route.post('/sessionLogin', (req, res) => {
   const idToken = req.body.idToken.toString();
@@ -48,4 +50,4 @@ route.get('/sessionLogout', (req, res) => {
   res.redirect();
 });
 
-module.exports = route;
+export default route;

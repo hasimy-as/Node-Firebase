@@ -1,11 +1,12 @@
-const express = require('express');
-const csrf = require('csurf');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const firebase = require('firebase-admin');
-const route = require('./route/router');
+import express from 'express';
+import csrf from 'csurf';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import firebase from 'firebase-admin';
+import cors from 'cors';
 
-const serviceAccount = require('./serviceKey.json');
+import route from './route/router';
+import serviceAccount from './serviceKey.json';
 
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount),
@@ -25,6 +26,7 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(csrfMiddleware);
+app.use(cors());
 
 app.listen(PORT, (err) => {
   if (err) throw err;
