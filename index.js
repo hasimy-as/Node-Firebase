@@ -10,7 +10,7 @@ import serviceAccount from './serviceKey.json';
 
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount),
-  databaseURL: 'https://express-auth-b02ef.firebaseio.com',
+  databaseURL: 'https://your-name-app-FC.firebaseio.com',
 });
 
 const csrfMiddleware = csrf({ cookie: true });
